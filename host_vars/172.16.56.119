@@ -1,4 +1,4 @@
-mysql_root_password: 'Cechealth@2018'
+mysql_root_password: 'Centos@2018'
 mysql_databases:
 - name: ambari 
   encoding: utf8

@@ -2,6 +2,6 @@
 host_type:
  - docker 
 
-mysql_root_password: 'Cechealth@2020'
+mysql_root_password: 'Centos@2020'
 mysql_innodb_buffer_pool_size: 4G
 

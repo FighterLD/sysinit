@@ -6,7 +6,7 @@ host_type:
   - java
   - web
 
-mysql_root_password: 'Cechealth@2018'
+mysql_root_password: 'Centos@2018'
 mysql_innodb_buffer_pool_size: 6G
 mysql_databases:
  - name: shepher

@@ -1,15 +1,13 @@
 [mysql]
-172.16.56.61 ansible_ssh_private_key_file=ssh_keys/cechealth_test
-172.16.56.41 ansible_ssh_private_key_file=ssh_keys/cechealth_test
+172.16.56.61 ansible_ssh_private_key_file=ssh_keys/
+172.16.56.41 ansible_ssh_private_key_file=ssh_keys/xxx
 #172.16.56.82
 172.16.56.76
 172.16.56.96
 172.16.63.27
 172.16.63.28
-172.16.56.104 ansible_ssh_private_key_file=ssh_keys/cechealth_test
+172.16.56.104 ansible_ssh_private_key_file=ssh_keys/xxx
 172.16.56.119
-172.16.63.37 ansible_ssh_user=root ansible_ssh_pass=Cechealth@2018
-172.16.63.38 ansible_ssh_user=root ansible_ssh_pass=Cechealth@2018
 172.16.55.44 
 
 [postgre]
@@ -42,8 +40,8 @@
 #172.16.56.69
 #172.16.56.68
 172.16.56.108
-172.16.56.116  ansible_ssh_private_key_file=ssh_keys/cechealth_test
-172.16.56.118  ansible_ssh_private_key_file=ssh_keys/cechealth_test
+172.16.56.116  ansible_ssh_private_key_file=ssh_keys/xxx
+172.16.56.118  ansible_ssh_private_key_file=ssh_keys/xxx
 172.16.56.105
 172.16.56.101
 172.16.56.92
@@ -109,7 +107,7 @@ ops-vm
 [ops-vm]
 172.16.56.[140:142]
 172.16.56.97
-172.16.56.143 ansible_ssh_private_key_file=ssh_keys/cechealth_test
+172.16.56.143 ansible_ssh_private_key_file=ssh_keys/xxx
 172.16.56.66
 172.16.56.96
 172.16.56.61
@@ -132,7 +130,7 @@ ops-vm
 172.21.57.163
 172.21.56.15 ansible_ssh_pass='Cechealth@2018' ansible_ssh_user='root'
 172.21.56.18 ansible_ssh_pass='Cechealth@2018' ansible_ssh_user='root'
-172.21.57.10 ansible_ssh_private_key_file=ssh_keys/cechealth_test
+172.21.57.10 ansible_ssh_private_key_file=ssh_keys/xxx
 
 [dev-test-vm:children]
 dev-vm
@@ -140,7 +138,7 @@ test-vm
 
 [dev-vm]
 172.16.56.124
-172.16.56.126 ansible_ssh_private_key_file=ssh_keys/cechealth_test 
+172.16.56.126 ansible_ssh_private_key_file=ssh_keys/xxx 
 172.16.56.41
 172.16.56.53
 172.16.56.64
@@ -223,8 +221,8 @@ test-vm
 #ansible_ssh_user='root'
 
 [bj-mdm-test]
-172.21.56.9 ansible_ssh_private_key_file=ssh_keys/cechealth_test
-172.21.56.10 ansible_ssh_private_key_file=ssh_keys/cechealth_test
+172.21.56.9 ansible_ssh_private_key_file=ssh_keys/xxx
+172.21.56.10 ansible_ssh_private_key_file=ssh_keys/xxx
 
 [bj-test]
 172.21.56.5
@@ -268,7 +266,7 @@ cd-openstack
 172.22.55.7
 [qianzhiji:vars]
 ansible_ssh_user=root 
-ansible_ssh_pass=cechealth
+ansible_ssh_pass=centos
 
 [dv1-de-db2wh]
 172.20.57.26
@@ -283,12 +281,12 @@ ansible_ssh_pass=cechealth
 172.20.57.4
 172.20.57.9
 172.20.57.5
-172.21.56.11 ansible_ssh_private_key_file=ssh_keys/cechealth_test
+172.21.56.11 ansible_ssh_private_key_file=ssh_keys/xxx
 
-172.16.55.44 ansible_ssh_pass='cechealth' ansible_ssh_user='root'
+172.16.55.44 ansible_ssh_pass='centos' ansible_ssh_user='root'
 
 [openstack-ceph]
-172.16.56.82 ansible_ssh_private_key_file=ssh_keys/cechealth_test
+172.16.56.82 ansible_ssh_private_key_file=ssh_keys/xxx
 
 [zookeepers]
 172.16.56.33
@@ -299,6 +297,7 @@ ansible_ssh_pass=cechealth
 172.16.56.33
 172.16.56.75
 172.16.56.120
+
 [redis-mgt]
 172.16.56.75
 

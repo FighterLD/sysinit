@@ -2,7 +2,7 @@
 #host_type:
 #  - web
 
-mysql_root_password: 'Cechealth@2019'
+mysql_root_password: 'Centos@2020'
 mysql_innodb_buffer_pool_size: 6G
 mysql_users:
  - name: dev

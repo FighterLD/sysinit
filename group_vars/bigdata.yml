@@ -3,6 +3,6 @@ host_type:
   - java
   - ldap
 
-#ansible_ssh_private_key_file: /etc/ansible/ssh_keys/cechealth_test
+#ansible_ssh_private_key_file: /etc/ansible/ssh_keys/centos_test
 #ssh_access用于ambari集群安装之后设置访问权限
 #ssh_access: True

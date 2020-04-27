@@ -1,4 +1,4 @@
 ---
-#ansible_ssh_private_key_file: ssh_keys/cechealth_test
-#root_password=Cechealth@dev-test
+#ansible_ssh_private_key_file: ssh_keys/centos_test
+#root_password=Centos@dev-test
 #root_password: $6$39KGrUtE0WQ4jdlx$nwzdHLqbiTct2lbxC3GGvpeUhhsectGUgJ6wonMKTVRbGA5Kx6EnxX5PdlL6GLbvYKeXshutCO4VGXgCTpXvI1
