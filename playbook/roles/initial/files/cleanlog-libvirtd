@@ -1,0 +1,10 @@
+/var/log/libvirt/libvirtd.log {
+        weekly
+        missingok
+        rotate 10
+        compress
+        create
+        dateext
+        copytruncate
+        minsize 100k
+}

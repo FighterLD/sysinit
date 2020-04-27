@@ -1,0 +1,52 @@
+---
+- name: copy docker-ce.repo  
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/yum.repos.d/{{ item }}"
+  with_items:
+    - docker-ce.repo
+  tags: docker
+
+- name: install docker-ce
+  yum:
+    name:
+      - docker-ce
+    update_cache: yes
+    state: present
+  tags: docker
+
+- name: enable docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  tags:
+    - docker
+
+- name: install docker-py
+  yum:
+    name: python-docker-py
+    state: present
+    update_cache: yes
+  tags:
+    - docker
+    - docker-py
+
+- name: locale docker mirror
+  copy:
+    src: "docker-mirror.json"
+    dest: "/etc/docker/daemon.json"
+  tags:
+    - docker
+    - docker_registry
+  notify: restart docker
+
+- name: login docker mirror
+  docker_login:
+    username: admin
+    password: c@e@Hs71nXuc8Aek
+    registry: harbor.cechealth.cn
+  tags:
+    - docker
+    - docker_login
+

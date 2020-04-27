@@ -1,0 +1,71 @@
+---
+- name: Install lvm2
+  yum:
+    name: lvm2
+    state: present
+    update_cache: yes
+  tags:
+    - lvm
+
+- name: u'对未分区磁盘分区'
+  parted:
+    device: "{{ lvm.disk_device }}"
+    number: "{{ lvm.part_num }}"
+    state: present
+  when: lvm.disk_device
+  tags:
+    - lvm
+
+- name: u'创建卷组'
+  lvg:
+    vg: "{{ lvm.vg_name }}"
+    pvs: "{{ lvm.disk_device }}{{ lvm.part_num }}"
+  when: lvm.vg_name and lvm.disk_device and lvm.part_num
+  tags:
+    - lvm
+
+- name: u'创建逻辑卷'
+  lvol:
+    vg: "{{ lvm.vg_name }}"
+    lv: "{{ lvm.lv_name }}"
+    size: 100%FREE
+    shrink: "{{ lvm_shrink | default(False) }}"
+  when: lvm.vg_name and lvm.lv_name
+  tags:
+    - lvm
+
+- name: u'格式化lvm分区'
+  filesystem:
+    fstype: "{{ lvm.lvfilesystem }}"
+    dev: /dev/{{ lvm.vg_name }}/{{ lvm.lv_name }}
+  when: lvm.lvfilesystem and lvm.vg_name and lvm.lv_name
+  tags:
+    - lvm
+
+- name: u'挂载目录'
+  mount:
+    name: "{{ lvm.mount_path }}"
+    src: /dev/{{ lvm.vg_name }}/{{ lvm.lv_name }}
+    fstype: "{{ lvm.lvfilesystem }}"
+    state: mounted
+  when: lvm.lvfilesystem and lvm.vg_name and lvm.lv_name
+  tags:
+    - lvm
+
+- name: u'创建lvm后重新创建/opt下的目录'
+  file: path={{ item }} state=directory
+  with_items:
+    - /opt/tools
+    - /opt/scripts
+    - /opt/database
+    - /opt/backup
+  tags:
+    - lvm
+
+- name: u'创建lvm后重新创建cechealth目录'
+  file: path={{ item }} state=directory mode='0755' owner=cechealth group=root
+  with_items:
+    - /opt/cechealth/app
+    - /opt/cechealth/files
+  tags:
+    - lvm

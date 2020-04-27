@@ -1,0 +1,12 @@
+- name: create neo4j group
+  group:
+    name: neo4j
+    state: present
+- name: create neo4j user
+  user:
+    name: neo4j
+    shell: /bin/bash
+    groups: neo4j
+    createhome: yes
+    home: /home/neo4j
+    state: present

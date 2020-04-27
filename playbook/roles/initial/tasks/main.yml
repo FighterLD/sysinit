@@ -1,0 +1,24 @@
+---
+ - import_tasks: sysinit.yml
+   tags: sysinit
+   when: 
+     - "'physical' not in host_type"
+ - include_tasks: sysinit-physical.yml
+   when: "'physical' in host_type"
+   tags: sysinit
+ - import_tasks: ldap.yml
+   when: "'ldap' in host_type"
+ - import_tasks: lvm.yml
+   when: "'lvm' in host_type"
+ - import_tasks: java.yml
+   when: "'java' in host_type"
+ - import_tasks: web.yml
+   when: "'web' in host_type"
+ - import_tasks: docker.yml
+   when: "'docker' in host_type"
+ - import_tasks: node_exporter.yml
+   tags: prometheus
+ - import_tasks: prometheus.yml
+   tags: prometheus
+ - import_tasks: elk.yml
+   when: "'prod-vm' in group_names"

@@ -1,0 +1,7 @@
+[docker-ce-stable]
+name=Docker CE Stable - $basearch
+baseurl=http://172.16.56.143/docker-ce-stable/Packages/
+enabled=1
+gpgcheck=0
+gpgkey=http://172.16.56.143/docker-ce-stable/gpg
+

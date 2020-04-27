@@ -1,0 +1,5 @@
+[ceph_stable]
+baseurl = http://172.16.56.143/ceph/rpm-luminous/el7/$basearch
+gpgcheck = 1
+gpgkey = http://172.16.56.143/ceph/keys/release.asc
+name = Ceph Stable repo

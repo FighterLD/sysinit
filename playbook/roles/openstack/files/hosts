@@ -1,0 +1,45 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+172.20.200.2 bj-tr-mdm-01
+172.20.200.3 bj-tr-mdm-db-01
+172.20.200.4 bj-tr-db2-01
+172.20.200.5 bj-tr-icp-01
+172.20.200.6 bj-tr-icp-02
+172.20.200.7 bj-tr-icp-03
+172.20.200.8 bj-tr-cognos-01
+172.20.200.9 bj-tr-compute-01
+172.20.200.10 bj-tr-compute-02
+172.20.200.11 bj-tr-compute-03
+172.20.200.12 bj-tr-compute-04
+172.20.200.13 bj-tr-compute-05
+172.20.200.14 bj-tr-compute-06
+172.20.200.15 bj-tr-compute-07
+172.20.200.16 bj-tr-compute-08
+172.20.200.17 bj-tr-compute-09
+172.20.200.18 bj-tr-compute-10
+172.20.200.19 bj-dt-mdm-01
+172.20.200.20 bj-dt-mdm-db-01
+172.20.200.21 bj-dt-db2-01
+172.20.200.22 bj-controller-01
+172.20.200.23 bj-gpfs-01
+172.20.200.24 bj-dt-icp-01
+172.20.200.25 bj-dt-icp-02
+172.20.200.26 bj-dt-icp-03
+172.20.200.27 bj-dt-cognos-01
+172.20.200.28 bj-dt-compute-01
+172.20.200.29 bj-controller-02
+172.20.200.30 bj-gpfs-02
+172.20.200.31 bj-dt-compute-02
+172.20.200.32 bj-dt-compute-03
+172.20.200.33 bj-dt-compute-04
+172.20.200.34 bj-dt-compute-05
+172.20.200.35 bj-dt-compute-06
+172.20.200.36 bj-controller-03
+172.20.200.37 bj-openstack-deployment-server
+172.20.200.38 bj-openstack-log
+172.20.200.39 bj-dt-compute-07
+172.20.200.40 bj-dt-compute-08
+172.20.200.41 bj-dt-compute-09
+172.20.200.42 bj-dt-compute-10
+172.20.200.200 gpfs-ces-200

@@ -1,0 +1,21 @@
+[rhel-7-server-extras-rpms]
+name=Red Hat Enterprise Linux 7 Server - Extras (RPMs)
+baseurl=http://172.16.56.143/rhel-7-server-extras-rpms/Packages
+enabled=1
+gpgcheck=0
+priority=1
+
+[rhel-7-server-rpms]
+name=Red Hat Enterprise Linux 7 Server - (RPMs)
+baseurl=http://172.16.56.143/rhel-7-server-rpms/Packages
+enabled=1
+gpgcheck=0
+priority=1
+
+[rhel-7-server-optional-rpms]
+name=Red Hat Enterprise Linux 7 Server Optional - (RPMs)
+baseurl=http://172.16.56.143/rhel-7-server-optional-rpms/Packages
+enabled=1
+gpgcheck=0
+priority=1
+

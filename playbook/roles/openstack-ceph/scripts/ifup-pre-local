@@ -1,0 +1,22 @@
+#!/bin/bash
+if [[ "$1" == "ifcfg-br-flat" ]]
+  then
+    ip link add br-flat-veth type veth peer name eth12 || true
+    ip link add br-flat-veth2 type veth peer name eth13 || true
+    ip link set br-flat-veth up
+    ip link set br-flat-veth2 up
+    ip link set eth12 up
+    ip link set eth13 up
+fi
+if [[ "$1" == "ifcfg-br-storage" ]]
+  then
+    ip link add br-storage-veth type veth peer name eth14 || true
+    ip link set br-storage-veth up
+    ip link set eth14 up
+fi
+if [[ "$1" == "ifcfg-br-mgmt" ]]
+  then
+    ip link add br-mgmt-veth type veth peer name eth11 || true
+    ip link set br-mgmt-veth up
+    ip link set eth11 up
+fi

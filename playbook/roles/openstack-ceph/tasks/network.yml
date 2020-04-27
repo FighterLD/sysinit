@@ -1,0 +1,84 @@
+---
+- name: disable network manager
+  service:
+    name: NetworkManager
+    state: stopped
+    enabled: no
+  tags:
+    - disable_network
+    - network
+
+- name: bond configure
+  template:
+    src: ifcfg-bond.j2
+    dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.net }}"
+    backup: yes
+  when:
+    - '"bond" in item.net'
+  with_items:
+    - "{{ network_device }}"
+  tags:
+    - network-config
+    - test_network_82
+    - network
+
+- name: not bond configure
+  template:
+    src: ifcfg-eth.j2
+    dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.net }}"
+    backup: yes
+  when:
+    - '"bond" not in item.net'
+  with_items:
+    - "{{ network_device }}"
+  tags:
+    - network-config
+    - test_network_82
+    - network
+
+- name: get storage_ip
+  shell: ifconfig {{ item.net }} | grep "inet " | awk '{ print $2}'
+  register: info
+  when:
+    - '"storage" in item.br'
+  with_items:
+    - "{{ network_device }}"
+  tags:
+    - network-config
+    - network
+
+- name: display vars
+  debug: msg={{ info }}
+  tags:
+    - network-config
+    - network
+
+- name: configure bridge
+  template:
+    src: ifcfg-{{ item.br }}.j2
+    dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.br }}"
+    backup: yes
+  with_items:
+    - "{{ network_device }}"
+  tags:
+    - network-config
+    - network
+
+
+- name: prepare pre-up and post-up scripts
+  copy:
+    src: "{{ item }}"
+    dest: /sbin/
+    owner: root
+    mode: 0755
+  with_fileglob:
+    - scripts/if*-local
+  tags: net-script
+
+- name: manually up and down interfaces
+  service: 
+    name: network 
+    state: restarted
+  tags: 
+    - restart_network
+    - network

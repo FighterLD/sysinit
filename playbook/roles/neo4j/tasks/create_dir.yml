@@ -1,0 +1,17 @@
+- name: create directory if they don't exist
+  file: path={{ item }} state=directory owner=neo4j group=neo4j mode=0755
+  #file:
+  #  path: {{ item }}
+  #  state: directory
+  #  owner: neo4j
+  #  group: neo4j
+  #  mode: 0644
+  with_items:
+    - /opt/cechealth/app
+    - /var/log/neo4j
+    - /opt/database/neo4j/data 
+    - /opt/database/neo4j/plugins
+    - /opt/database/neo4j/import
+    - /opt/database/neo4j/certificates
+
+    #- /data/another

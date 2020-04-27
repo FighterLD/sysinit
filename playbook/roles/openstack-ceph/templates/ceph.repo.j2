@@ -1,0 +1,13 @@
+[ceph]
+name = Ceph packages for $basearch
+baseurl = http://{{ repo_host }}/ceph/rpm-luminous/el7/x86_64/
+enabled = 1
+gpgcheck = 0
+priority = 50
+
+[ceph-noarch]
+name = Ceph noarch packages
+baseurl = http://{{ repo_host }}/ceph/rpm-luminous/el7/noarch/
+enabled = 1
+gpgcheck = 0
+priority = 50

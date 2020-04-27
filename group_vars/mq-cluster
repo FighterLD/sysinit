@@ -1,0 +1,8 @@
+rabbitmq_cluster_master: ops-1
+update_hosts: true
+rabbitmq_hosts: |
+  172.16.56.33 ops-3
+  172.16.56.120 ops-2
+  172.16.56.75 ops-1
+enable_tls: false
+backup_queues_in_two_nodes: true

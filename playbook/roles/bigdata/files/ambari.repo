@@ -1,0 +1,35 @@
+#VERSION_NUMBER=2.6.2.0-155
+[ambari-2.6.2.0]
+name=ambari Version - ambari-2.6.2.0
+baseurl=http://172.16.56.143/ambari/centos7/2.6.2.0-155
+gpgcheck=1
+gpgkey=http://172.16.56.143/ambari/centos7/2.6.2.0-155/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+#VERSION_NUMBER=2.6.5.0-292
+[HDP-2.6.5.0]
+name=HDP Version - HDP-2.6.5.0
+baseurl=http://172.16.56.143/HDP/centos7/2.6.5.0-292
+gpgcheck=1
+gpgkey=http://172.16.56.143/HDP/centos7/2.6.5.0-292/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+#VERSION_NUMBER=2.6.5.0-292
+[HDP-GPL-2.6.5.0]
+name=HDP-GPL Version - HDP-GPL-2.6.5.0
+baseurl=http://172.16.56.143/HDP-GPL/centos7/2.6.5.0-292
+gpgcheck=1
+gpgkey=http://172.16.56.143/HDP-GPL/centos7/2.6.5.0-292/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+#VERSION_NUMBER=1.1.0.21
+[HDP-UTILS-1.1.0.21]
+name=HDP-UTILS Version - HDP-UTILS-1.1.0.21
+baseurl=http://172.16.56.143/HDP-UTILS-1.1.0.21
+gpgcheck=1
+gpgkey=http://172.16.56.143/HDP-UTILS-1.1.0.21/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1

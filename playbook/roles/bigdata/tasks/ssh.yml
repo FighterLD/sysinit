@@ -1,0 +1,56 @@
+---
+- name: u'设置hdfs密码'
+  user:
+    name: hdfs
+    password: $6$hWNeUznltD/TAq63$BkxdvGxfT830eA8wJ6dm80dX1axOlwQuqx1D/vNmdyEWraW0qRyofzrf6hsYL3BOqAV3QZ3KrCEuvxLUQt.wN.
+#   password: hdfs
+  when: inventory_hostname == groups['big-opt'][0]
+  tags:
+    - hdfs_user
+    - hdfs
+
+- name: u'复制hdfs用户的私钥'
+  copy:
+   src: "id_rsa_hdfs"
+   dest: "/home/hdfs/.ssh/id_rsa"
+   mode: 0600
+   owner: hdfs
+   group: hdfs
+  when: inventory_hostname == groups['big-opt'][0]
+  tags:
+    - hdfs_keys
+    - hdfs
+
+- name: u'复制hdfs用户的公钥'
+  authorized_key:
+    user: hdfs
+    state: present
+    key: "{{ lookup('file', 'hdfs_authorized_keys') }}"
+  tags:
+    - hdfs_pub
+    - hdfs 
+
+- name: u'ssh 权限控制'
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "^#?AllowUsers.+$"
+    line: "AllowUsers hdfs@{{ groups['big-opt'][0] }} root"
+  when: inventory_hostname != groups['big-opt'][0]
+  notify: restart_sshd
+  tags:
+    - ssh_access
+    - hdfs
+
+- name: u'创建业务数据、脚本、测试等目录'
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+    owner: hdfs
+    group: hdfs
+  with_items:
+    - /opt/health
+    - /opt/private
+  tags:
+    - hdfs_dir
+    - hdfs

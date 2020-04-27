@@ -1,0 +1,11 @@
+---
+- name: restart mysql
+  service: "name={{ mysql_daemon }} state=restarted sleep=5"
+
+- name: restart mysqld-exporter
+  service:
+    name: mysqld-exporter
+    enabled: yes
+    state: restarted
+  tags:
+    - mysqld_exporter

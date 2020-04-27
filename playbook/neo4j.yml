@@ -1,0 +1,19 @@
+---
+- hosts: prod-vm
+#- hosts: "{{ host_name }}"
+  become: yes
+  pre_tasks:
+  - name: Check if java is Installed .
+    shell:  java -version
+    ignore_errors: True
+    register: java_check
+
+  - name: if not Install jdk, Install the jdk.
+    #shell: yum install -y jdk1.8.0_74.x86_64 
+    yum: state=present name=jdk1.8.0_74.x86_64
+    when: java_check.stdout.find('openjdk version') != 1
+  tags:
+    - neo4j
+  roles:
+    - { role: neo4j }
+  

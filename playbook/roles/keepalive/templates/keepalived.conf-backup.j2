@@ -1,0 +1,53 @@
+# Copyright 2015, Jean-Philippe Evrard <jean-philippe@evrard.me>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+vrrp_sync_group haproxy {
+  group {
+    public
+  }
+  notify "/etc/keepalived/haproxy_notify.sh"
+}
+
+vrrp_script haproxy_check_script {
+  script "kill -0 `cat /var/run/haproxy.pid`"
+  interval 5   # checking every 5 seconds (default: 5 seconds)
+  fall 3           # require 3 failures for KO (default: 3)
+  rise 6           # require 6 successes for OK (default: 6)
+}
+vrrp_script pingable_check_script {
+  script "ping -c 1 {{ gateway }} 1>&2"
+  interval 10   # checking every 10 seconds (default: 5 seconds)
+  fall 2           # require 2 failures for KO (default: 3)
+  rise 4           # require 4 successes for OK (default: 6)
+}
+
+vrrp_instance public {
+  interface br-mgmt
+  state MASTER
+  virtual_router_id {{ router_id }}
+  priority 150
+  authentication {
+    auth_type PASS
+    auth_pass 51ef7165b806e34fe46f46d5a6ee8f91110d75a1
+  }
+  virtual_ipaddress {
+    {{ vip }}/32 dev {{ interface }}
+  }
+  track_script {
+    haproxy_check_script
+    pingable_check_script
+  }
+
+
+}

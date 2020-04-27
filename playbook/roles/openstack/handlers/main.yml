@@ -1,0 +1,40 @@
+---
+- name: restart sshd
+  service: name=sshd state=restarted
+  tags:
+    - restart_sshd
+
+- name: restart rsyslog
+  service:
+    name: rsyslog
+    state: restarted
+  tags:
+    - restart_rsyslog
+
+- name: restart node-exporter
+  service:
+    name: node-exporter
+    enabled: yes
+    state: restarted
+  tags:
+    - node_exporter
+
+- name: restart docker
+  service:
+    name: docker
+    state: restarted
+  tags:
+    - restart_docker
+
+- name: restart ntpd
+  service:
+    name: ntpd
+    enabled: yes
+    state: restarted
+  tags:
+    - restart_ntpd
+
+- name: restart zabbix-agent
+  service: name=zabbix-agent state=restarted
+  tags:
+    - restart_zabbix

@@ -1,0 +1,7 @@
+---
+- hosts: openstack
+  remote_user: root
+  gather_facts: False
+#  gather_facts: True
+  roles:
+    - { role: openstack } 

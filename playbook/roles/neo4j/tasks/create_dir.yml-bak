@@ -1,0 +1,10 @@
+- name: create directory if they don't exist
+  file:
+    path: {{ item }}
+    state: directory
+    owner: neo4j
+    group: neo4j
+    mode: 0644
+  with_items:
+    - /var/log/neo4j
+    #- /data/another

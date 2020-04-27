@@ -1,0 +1,6 @@
+[gpfs]
+name=IBM Spectrum Scale
+baseurl=http://172.16.56.143/gpfs/gpfs-5.0.2.0
+enabled=1
+gpgcheck=0
+priority=1

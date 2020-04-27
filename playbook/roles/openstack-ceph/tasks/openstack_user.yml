@@ -1,0 +1,37 @@
+---
+- name: Create openstack user group
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - glance
+    - nova
+    - cinder
+  tags:
+    - openstack_user
+
+- name: Create openstack user
+  user:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - glance
+    - nova
+    - cinder
+  tags:
+    - openstack_user
+
+- name: Create openstack dir
+  file:
+    path: "{{ item.dir }}"
+    state: directory
+    owner: "{{ item.group_user }}"
+    group: "{{ item.group_user }}"
+    mode: 0755
+  with_items:
+    - { dir: "/var/lib/glance", group_user: "glance" }
+    - { dir: "/var/lib/glance/images", group_user: "glance" }
+    - { dir: "/var/lib/nova", group_user: "nova" }
+    - { dir: "/var/lib/cinder", group_user: "cinder" }
+  tags:
+    - openstack_dir

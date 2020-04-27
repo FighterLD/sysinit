@@ -1,0 +1,67 @@
+---
+- name: u'接入ldap前，先删除cechealth用户'
+  user:
+    name: cechealth
+    state: absent
+  ignore_errors: yes
+  tags:
+    - ldap
+
+- name: u'接入ldap前，先删除cechealth用户组'
+  group:
+    name: cechealth
+    state: absent
+  ignore_errors: yes
+  tags:
+    - ldap
+
+- name: Install nss-pam-ldapd
+  yum: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - nss-pam-ldapd
+  tags:   
+    - ldap
+
+- name: Add Parameter File
+  copy: src={{ item.src }} dest={{ item.dest }} mode='0644' backup=yes
+  with_items:
+    - {src: "nslcd.conf",
+     dest: "/etc/nslcd.conf"}
+    - {src: "system-auth",
+     dest: "/etc/pam.d/system-auth-ac"}
+    - {src: "nsswitch.conf",
+     dest: "/etc/nsswitch.conf"}
+    - {src: "authconfig",
+     dest: "/etc/sysconfig/authconfig"}
+    - {src: "sshd",
+     dest: "/etc/pam.d/sshd"}
+    - {src: "password-auth",
+     dest: "/etc/pam.d/password-auth-ac"}
+    - {src: "access.conf",
+     dest: "/etc/security/access.conf"}
+  tags:
+    - ldap
+
+- name: Enable nslcd
+  service:
+   name: nslcd
+   state: started
+   enabled: yes
+  tags:
+   - ldap
+
+- name: Sshd Restart
+  service:
+   name: sshd
+   state: restarted
+  tags:
+    - ldap
+
+- name: Create Cechealth User Dir
+  file: path={{ item }} state=directory mode='0755' owner=root group=root
+  with_items:
+    - /opt/cechealth/app
+    - /opt/cechealth/files
+  tags:
+    - ldap
+    - ldap_cechealth

@@ -1,0 +1,15 @@
+/var/log/messages
+{
+    weekly
+    dateext
+    minsize 100k
+    rotate 4
+    compress
+    missingok
+    copytruncate
+    notifempty
+    create
+    postrotate
+        /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+    endscript
+}

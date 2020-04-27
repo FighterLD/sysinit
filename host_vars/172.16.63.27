@@ -1,0 +1,16 @@
+---
+host_type:
+ - mysql
+mysql_root_password: 'Cechealth@2019'
+mysql_innodb_buffer_pool_size: 8G
+#mysql_databases:
+# - name: cjfh
+#   encoding: utf8
+#   collation: utf8_bin
+mysql_replication_user:
+  name: replication
+  password: 'Cechealth@2019'
+mysql_server_id: "1"
+mysql_binlog_format: "MIXED"
+mysql_replication_role: 'master'
+mysql_replication_master: '172.16.63.27'

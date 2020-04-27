@@ -1,0 +1,20 @@
+[Unit]
+Description=Neo4j Graph Database
+After=network.target
+
+[Service]
+Type=forking
+User=neo4j
+Group=neo4j
+ExecStart=/opt/cechealth/app/neo4j-community-3.5.8/bin/neo4j start
+ExecStop=/opt/cechealth/app/neo4j-community-3.5.8/bin/neo4j stop
+ExecReload=/opt/cechealth/app/neo4j-community-3.5.8/bin/neo4j restart
+RemainAfterExit=no
+Restart=on-failure
+#PIDFile = /var/run/neo4j/neo4j.pid
+Environment="NEO4J_CONF=/opt/cechealth/app/neo4j-community-3.5.8/conf" "NEO4J_HOME=/opt/cechealth/app/neo4j-community-3.5.8"
+LimitNOFILE=60000
+TimeoutSec=600
+
+[Install]
+WantedBy=multi-user.target

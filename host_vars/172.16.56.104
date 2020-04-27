@@ -1,0 +1,23 @@
+---
+#host_type:
+#  - web
+
+mysql_root_password: 'Cechealth@2019'
+mysql_innodb_buffer_pool_size: 6G
+mysql_databases:
+ - name: ambari
+   encoding: utf8
+   collation: utf8_bin
+ - name: hive
+   encoding: utf8
+   collation: utf8_bin
+mysql_users:
+ - name: ambari
+   host: "%"
+   password: 'Ambari-2019'
+   priv: "ambari.*:ALL"
+ - name: hive
+   host: "%"
+   password: 'Hive-2019'
+   priv: "hive.*:ALL"
+

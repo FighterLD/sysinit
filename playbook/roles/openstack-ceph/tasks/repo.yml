@@ -1,0 +1,28 @@
+---
+- name: back yum.repos.d dir
+  shell: mv /etc/yum.repos.d /etc/yum.repos.d-$(date  +%F-%H-%M-%S)
+  tags:
+    - create_repo
+
+- name: Create yum.repos.d Dir
+  file:
+    path: /etc/yum.repos.d
+    state: directory
+    mode: 0755
+  tags:
+    - create_repo
+
+- name: Create repo
+  template:
+    src: "{{ item }}.j2"
+    dest: /etc/yum.repos.d/{{ item }}
+    mode: 0755
+    backup: yes
+  with_items:
+    - els-erlang.repo
+    - epel.repo
+    - MariaDB.repo
+    - RabbitMQ.repo
+    - rdo.repo
+    - CentOS-Base.repo
+    - ceph.repo

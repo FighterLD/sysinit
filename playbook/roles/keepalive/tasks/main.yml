@@ -1,0 +1,55 @@
+---
+- name: install keepalived 
+  yum:
+   name: keepalived
+   state: present
+  tags: keepalive
+
+- name: install haproxy
+  yum:
+   name: haproxy
+   state: present
+  tags: keepalive
+
+- name: copy notify script
+  copy:
+   src: haproxy_notify.sh
+   dest: /etc/keepalived/haproxy_notify.sh
+   owner: root
+   group: root
+   mode: '0755'
+  tags: keepalive
+
+- name: kernel nonlocal port bind config
+  lineinfile:
+    dest: /etc/sysctl.conf
+    regexp: "net.ipv4.ip_nonlocal_bind"
+    line: "net.ipv4.ip_nonlocal_bind = 1"
+    state: present
+  tags:
+    - keepalive
+
+- name: kernel option to take effect
+  command: >
+    - sysctl 
+    - -p
+
+- name: config keepalive
+  template: 
+   src: keepalived.conf.j2
+   dest: /etc/keepalived/keepalived.conf
+   owner: root
+   group: root
+   mode: '0600'
+  tags: keepalive
+  notify: restart keepalived
+
+- name: config haproxy
+  template: 
+   src: haproxy.cfg.j2
+   dest: /etc/haproxy/haproxy.cfg
+   owner: root
+   group: root
+   mode: '0600'
+  tags: keepalive
+  notify: restart haproxy

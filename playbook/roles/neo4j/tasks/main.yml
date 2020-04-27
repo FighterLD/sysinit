@@ -1,0 +1,7 @@
+# install Neo4j.
+- include_tasks: user.yml
+  when: "'neo4j' in host_type"
+- include_tasks: create_dir.yml
+  when: "'neo4j' in host_type"
+- include_tasks: install.yml
+  when: "'neo4j' in host_type"

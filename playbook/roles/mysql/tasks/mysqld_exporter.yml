@@ -1,0 +1,23 @@
+---
+- name: scp mysqld_exporter files
+  copy: 
+    src: mysqld_exporter
+    dest: /opt/tools/mysqld_exporter
+    mode: 0755
+  tags:
+    - mysqld_exporter
+
+- name: scp promethus my.cnf 
+  template:
+    src: root-my.cnf.j2
+    dest: /opt/tools/my.cnf
+    mode: 0755
+  tags:
+   - mysqld_exporter
+  
+- name: start mysqld_exporter
+  shell: nohup /opt/tools/mysqld_exporter --config.my-cnf=/opt/tools/my.cnf 2>/dev/null 1>/dev/null &
+  tags:
+   - mysqld_exporter
+  
+

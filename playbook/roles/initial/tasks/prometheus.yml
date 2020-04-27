@@ -1,0 +1,12 @@
+---
+- name: Transfer node_info from Monitornode to PromethusServer
+  shell: sshpass -p "Cechealth@ops2020" ssh -o stricthostkeychecking=no root@172.16.56.111 """echo "{{ansible_default_ipv4['address']}}" > /opt/tools/node_list"""
+  ignore_errors: True
+  tags:
+    - promethus
+
+- name: Join Prometheus Monitoring
+  shell: sshpass -p "Cechealth@ops2020" ssh -o stricthostkeychecking=no root@172.16.56.111 """/usr/bin/python /opt/tools/join_node.py"""
+  ignore_errors: True
+  tags:
+    - promethus

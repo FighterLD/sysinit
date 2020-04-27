@@ -1,0 +1,265 @@
+---
+- name: resolv.conf setup
+  copy:
+    src: "resolv.conf"
+    dest: "/etc/resolv.conf"
+    mode: 0644
+    backup: yes
+  tags:
+    - sysinit
+    - dns_setup
+
+#- name: dns setup
+#  lineinfile:
+#    dest: "/etc/resolv.conf"
+#    regexp: "^#?nameserver {{ item }}$"
+#    line: "nameserver {{ item }}"
+#    state: present
+#  with_items:
+#    - 172.16.52.4
+#    - 172.16.52.5
+#  tags:
+#    - sysinit
+#    - dns_setup
+
+- name: Create Dir
+  file: path={{ item }} state=directory
+  with_items:
+    - /opt/tools
+    - /opt/scripts
+    - /opt/database
+    - /opt/backup
+  tags:
+    - sysinit
+
+- name: Create Group cechealth
+  group:
+    name: cechealth
+    state: present
+  when: "'ldap' not in host_type"
+  tags:
+    - sysinit
+    - create_user
+
+- name: Create User cechealth
+  user:
+    name: cechealth
+    shell: /bin/bash
+    group: cechealth
+  when: "'ldap' not in host_type"
+  tags:
+    - sysinit
+    - create-user
+
+- name: Create Cechealth User Dir
+  file: path={{ item }} state=directory mode='0755' owner=cechealth group=cechealth
+  with_items:
+    - /opt/cechealth/app
+    - /opt/cechealth/files
+  tags:
+    - sysinit
+
+- name: Create Log Dir
+  file:
+    path: /var/log/app
+    state: directory
+    mode: 0755
+  tags:
+    - sysinit
+
+- name: back yum repo file
+  shell: mv /etc/yum.repos.d /etc/yum.repos.d-$(date  +%F-%H-%M-%S)
+  tags:
+    - create_repo
+    - sysinit
+
+- name: Create yum repo Dir
+  file:
+    path: /etc/yum.repos.d
+    state: directory
+    mode: 0755
+  tags:
+    - sysinit
+    - create_repo
+    - create_repo_dir
+
+- name: Add repo cechealth
+  yum_repository:
+    name: cechealth
+    description: cechealth YUM repo
+    file: cechealth
+    baseurl: http://172.16.56.143/7/$basearch/
+    enabled: yes
+    gpgcheck: no
+  tags:
+    - sysinit
+    - repo_cechealth
+    - create_repo
+
+- name: Add System Parameter File
+  copy: src={{ item.src }} dest={{ item.dest }} mode='0755' backup=yes
+  with_items:
+    - {src: "redhat-base.repo",
+     dest: "/etc/yum.repos.d/redhat-base.repo"}
+    - {src: "epel.repo",
+     dest: "/etc/yum.repos.d/epel.repo"}
+    - {src: "epel-testing.repo",
+     dest: "/etc/yum.repos.d/epel-testing.repo"}
+    - {src: "limits.conf",
+     dest: "/etc/security/limits.conf"}
+    - {src: "sysctl-physical.conf",
+     dest: "/etc/sysctl.conf"}
+  when: ansible_distribution == "RedHat"
+  tags:
+    - base_repo
+    - config
+    - create_repo
+
+- name: Add System Parameter File
+  copy: src={{ item.src }} dest={{ item.dest }} mode='0755' backup=yes
+  with_items:
+    - {src: "CentOS-Base.repo",
+     dest: "/etc/yum.repos.d/CentOS-Base.repo"}
+    - {src: "epel.repo",
+     dest: "/etc/yum.repos.d/epel.repo"}
+    - {src: "epel-testing.repo",
+     dest: "/etc/yum.repos.d/epel-testing.repo"}
+    - {src: "limits.conf",
+     dest: "/etc/security/limits.conf"}
+    - {src: "sysctl.conf",
+     dest: "/etc/sysctl.conf"}
+    - {src: "docker-ce.repo",
+     dest: "/etc/yum.repos.d/docker-ce.repo"}
+  when: ansible_distribution == "CentOS"
+  tags:
+    - base_repo
+    - config
+    - create_repo
+
+- name: Change system.conf DefaultLimitCORE
+  lineinfile:
+    dest: /etc/systemd/system.conf
+    regexp: 'DefaultLimitCORE'
+    backrefs: no
+    line: 'DefaultLimitCORE=infinity'
+  tags:
+    - sysinit
+
+- name: Change system.conf DefaultLimitNOFILE
+  lineinfile:
+    dest: /etc/systemd/system.conf
+    regexp: 'DefaultLimitNOFILE'
+    backrefs: no
+    line: 'DefaultLimitNOFILE=1048576'
+  tags:
+    - sysinit
+
+- name: Change system.conf 
+  lineinfile:
+    dest: /etc/systemd/system.conf
+    regexp: 'DefaultLimitNPROC'
+    backrefs: no
+    line: 'DefaultLimitNPROC=100000'
+  tags:
+    - sysinit
+    - change_system_parameter
+
+- name: Selinux Disable
+  lineinfile:
+    dest: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: 'SELINUX=disabled'
+  tags:
+    - sysinit
+    - selinux_dsiable
+
+- name: Selinux stop
+  selinux: state=disabled
+  tags:
+    - sysinit
+    - selinux_stop  
+
+- name: Set Timezone
+  timezone: name=Asia/Shanghai
+  tags:
+    - sysinit
+    - set_timezone
+
+- name: ssh connect timeout setup
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "^#?{{ item.option }}.+$"
+    line: "{{ item.option }} {{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ ssh_config }}"
+  notify: restart sshd
+  tags:
+    - sysinit
+    - ssh_timeout
+
+- name: history record env set
+  lineinfile:
+    dest: "/etc/bashrc"
+    regexp: "^#?{{ item.option }}.+$"
+    line: "{{ item.option }}={{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ etc_bashrc }}"
+  tags:
+    - sysinit
+    - history_record
+
+- name: command record
+  lineinfile:
+    dest: /etc/rsyslog.conf
+    regexp: "^#?local5.+$"
+    line: "local5.*  /var/log/history.log"
+    state: present
+  notify: restart rsyslog
+  tags:
+    - history_record
+
+- name: ntp date sync
+  lineinfile:
+    dest: /etc/ntp.conf
+    regexp: "^#?server {{ item.index }}.+$"
+    line: "server {{ item.ip }} iburst"
+    state: present
+  with_items:
+    - { index: "0", ip: "172.16.52.2" }
+    - { index: "1", ip: "172.16.52.3" }
+  tags:
+    - ntp
+
+- name: Disabled chronyd
+  service:
+    name: chronyd
+    state: stopped
+    enabled: no
+  tags:
+    - ntp
+
+- name: Enabled ntpd
+  service:
+    name: ntpd
+    state: started
+    enabled: yes
+  tags:
+    - ntp
+
+- name: ntpd 配置文件修改
+  lineinfile:
+    dest: /etc/sysconfig/ntpd
+    regexp: "^#?OPTIONS=.+$"
+    line: "OPTIONS=\"-g -L\""
+    state: present
+  notify: restart ntpd
+  tags:
+    - ntp
+    - ntp_cfg
+
+#- name: update root password
+#  user:
+#    name: root
+#    password: "{{ root_password }}"
+#  tags:
+#    - passwd

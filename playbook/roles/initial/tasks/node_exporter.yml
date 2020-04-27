@@ -1,0 +1,18 @@
+---
+- name: scp node_exporter files
+  copy: 
+    src: node_exporter
+    dest: /opt/tools/node_exporter
+    mode: 0755
+  tags:
+    - node_exporter
+
+- name: scp node-exporter.service
+  template:
+    src: node-exporter.service.j2
+    dest: /etc/systemd/system/node-exporter.service
+    mode: 0755
+  notify: restart node-exporter
+  tags:
+   - node_exporter
+

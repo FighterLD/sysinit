@@ -1,0 +1,14 @@
+#!/bin/bash
+if [[ "$1" == "br-flat" ]]
+  then
+    ip link del br-flat-veth || true
+    ip link del br-flat-veth2 || true
+fi
+if [[ "$1" == "br-storage" ]]
+  then
+    ip link del br-storage-veth || true
+fi
+if [[ "$1" == "br-mgmt" ]]
+  then
+    ip link del br-mgmt-veth || true
+fi

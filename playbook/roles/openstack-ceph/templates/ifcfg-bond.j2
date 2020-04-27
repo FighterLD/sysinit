@@ -1,0 +1,9 @@
+NAME={{ bond_name }}
+DEVICE={{ bond_name }}
+BONDING_MASTER=yes
+TYPE=Bond
+ONBOOT=yes
+BOOTPROTO=none
+BONDING_OPTS="mode=4 miimon=100 xmit_hash_policy=layer3+4"
+NM_CONTROLLED=no
+BRIDGE={{ bridge_name }}

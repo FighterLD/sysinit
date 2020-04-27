@@ -1,0 +1,32 @@
+---
+#- name: Ensure PostgreSQL repo.
+#  yum:
+#    name: "{{ pgdg_redhat_repo }}"
+#    state: present
+
+- name: Ensure PostgreSQL repo.
+  template:
+    src: pgdg-96-redhat.repo.j2
+    dest: /etc/yum.repos.d/pgdg-96-redhat.repo
+    owner: root
+    group: root
+
+- name: Ensure PostgreSQL packages are installed.
+  yum:
+    name: "{{ postgresql_packages }}"
+    state: present
+    #enablerepo: "{{ postgresql_enablerepo | default(omit, true) }}"
+
+- name: Ensure PostgreSQL Python libraries are installed.
+  yum:
+    name: "{{ postgresql_python_library }}"
+    state: present
+    #enablerepo: "{{ postgresql_enablerepo | default(omit, true) }}"
+
+- name: Systemctl postgresql-9.6.service
+  template:
+    src: postgresql-9.6.service.j2
+    dest: /usr/lib/systemd/system/postgresql-9.6.service
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_group }}"
+    mode: 0600

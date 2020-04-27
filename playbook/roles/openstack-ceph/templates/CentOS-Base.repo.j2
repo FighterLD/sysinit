@@ -1,0 +1,23 @@
+[base]
+name=CentOS-$releasever - Base
+baseurl=http://{{ repo_host }}/base/
+gpgcheck=0
+enabled=1
+
+[updates]
+name=CentOS-$releasever - Updates
+baseurl=http://{{ repo_host }}/updates/
+gpgcheck=0
+enabled=1
+
+[extras]
+name=CentOS-$releasever - Extras
+baseurl=http://{{ repo_host }}/extras/
+gpgcheck=0
+enabled=1
+
+[centosplus]
+name=CentOS-$releasever - Plus
+baseurl=http://{{ repo_host }}/centosplus/
+gpgcheck=0
+enabled=0

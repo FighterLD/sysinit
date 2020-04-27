@@ -1,0 +1,14 @@
+#!/bin/bash
+if [[ "$1" == "br-flat" ]]
+  then
+    brctl addif br-flat br-flat-veth
+    brctl addif br-flat br-flat-veth2
+fi
+if [[ "$1" == "br-storage" ]]
+  then
+    brctl addif br-storage br-storage-veth
+fi
+if [[ "$1" == "br-mgmt" ]]
+  then
+    brctl addif br-mgmt br-mgmt-veth
+fi

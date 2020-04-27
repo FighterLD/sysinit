@@ -1,0 +1,4 @@
+---
+host_type:
+ - docker
+ - lvm

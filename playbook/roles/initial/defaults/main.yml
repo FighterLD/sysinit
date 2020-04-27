@@ -1,0 +1,43 @@
+---
+ssh_config:
+  - option: ClientAliveInterval
+    value: 60
+  - option: ClientAliveCountMax
+    value: 3
+
+host_type: []
+
+etc_bashrc:
+  - option: HISTFILESIZE
+    value: 2000
+  - option: HISTSIZE
+    value: 2000
+  - option: export HISTTIMEFORMAT
+    value: '"%Y%m%d-%H%M%S: "'
+  - option: export PROMPT_COMMAND
+    value: "'{ command=$(history 1 | { read x y; echo $y; }); logger -p local5.notice -t bash -i \"user=$USER,ppid=$PPID,from=$SSH_CLIENT,pwd=$PWD,command:$command\"; }'"
+
+lvm:
+  disk_device: /dev/vdb
+  part_num: 1
+  vg_name: cechealth
+  lv_name: data
+  lvfilesystem: xfs
+  mount_path: /opt
+
+#root_password: $6$KY5pXhv1Bbxtwy3e$I0coY0t2y7tfO2/WnQ.IfVZRS1JXj3yoJUGHpMzZMisGKK2TWLjT5qUm6A8YGBL.QnE3QbI9GOIiwPNK6TTY11
+
+ansible_fact:
+  - mysql
+  - redis
+  - rabbitmq
+  - kafka
+  - elasticsearch
+  - neo4j
+  - postgresql
+  - zookeeper
+  - ambari
+  - logstash
+  - kibana
+
+ansible_distribution: RedHat

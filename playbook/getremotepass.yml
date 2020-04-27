@@ -1,0 +1,9 @@
+---
+- hosts: prod-vm 
+  gather_facts: True
+  remote_user: root
+  tasks:
+  - name: transfer file to local server
+    fetch:   
+       src: /root/cechealth-pass
+       dest: /root/changepass

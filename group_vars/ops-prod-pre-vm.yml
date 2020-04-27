@@ -1,0 +1,7 @@
+---
+#ansible_ssh_private_key_file: ssh_keys/cechealth_prod
+#host_type:
+#  - java
+
+#root_password=5f3ff6bd-9301-4389-9262-2b382064325a
+#root_password: $6$j7JqDRMNOcdK4EVp$z/YNdK/5YtS.XyUDi8vUG1F/nTS6i1leLy4mGdf//0OkSoAnj8.QSvBSOzeYh8lgohzOZphy8EWWbanya3UWK. 

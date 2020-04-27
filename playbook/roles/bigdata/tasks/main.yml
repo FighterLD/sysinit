@@ -1,0 +1,69 @@
+---
+- import_tasks: ssh.yml
+  when: ssh_access is defined
+
+- name: Copy id_rsa
+  copy:
+   src: "id_rsa_bigdata"
+   dest: "/root/.ssh/id_rsa"
+   mode: 0600
+  tags:
+    - copy_keys
+
+- name: Set authorized key from file
+  authorized_key:
+    user: root
+    state: present
+    key: "{{ lookup('file', 'authorized_keys') }}"
+
+- name: Install packages ntp
+  yum:
+    name: ntp
+    state: present
+
+- name: Enable ntp service
+  service:
+    name: ntpd
+    state: started
+
+- name: Create Group ambari
+  group:
+    name: ambari
+    state: present
+
+- name: Create User ambari
+  user:
+    name: ambari
+    group: ambari 
+    password: '$6$MpXBtFCVyg53Siul$BlbLhAM2AqeFdECWrgE3N57r7LhzILJW1YqKwxW0845/p9ghjA2wUJRAar4EZzDr/.7ddPLe2pxBWPEj12pRb1'
+#   password: "ambari"
+
+- name: Create Yum Repo
+  copy:
+    src: ambari.repo
+    dest: /etc/yum.repos.d/ambari.repo
+    mode: 0755
+
+- name: Add /etc/hosts 
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "^#?{{ item }}.+$"
+    line: "{{ item }} {{ hostvars[item]['ansible_hostname'] }}.cechealth.cn {{ hostvars[item]['ansible_hostname'] }}"
+  with_inventory_hostnames:
+    - bigdata
+#  with_items:
+#    - "{{ groups['bigdata'] }}"
+  tags:
+    - etc_hosts
+
+- name: Install packages mysql-connector-java
+  yum:
+    name: mysql-connector-java
+    state: present
+
+- name: Update config cert-verification.cfg
+  lineinfile:
+    dest: "/etc/python/cert-verification.cfg"
+    regexp: "^#?verify.+$"
+    line: "verify=disable"
+

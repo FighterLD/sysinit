@@ -1,0 +1,14 @@
+---
+host_type:
+  - docker
+#  - lvm
+#  - ldap
+  - java
+  - web
+
+mysql_root_password: 'Cechealth@2018'
+mysql_innodb_buffer_pool_size: 6G
+mysql_databases:
+ - name: shepher
+   encoding: utf8
+   collation: utf8_bin

@@ -1,0 +1,17 @@
+/var/log/mysqld.log {
+        create 640 mysql mysql
+        notifempty
+        daily
+        rotate 10
+        missingok
+        compress
+        size 1G
+    postrotate
+       # just if mysqld is really running
+       if test -x /usr/bin/mysqladmin && \
+          /usr/bin/mysqladmin ping &>/dev/null
+       then
+          /usr/bin/mysqladmin flush-logs
+       fi
+    endscript
+}

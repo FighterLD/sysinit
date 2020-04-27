@@ -1,0 +1,6 @@
+---
+repo_host: 172.16.56.143
+network_device:
+  - { net: "eth0", br: "br-mgmt" }
+  - { net: "eth0", br: "br-storage" }
+#  - { net: "eth2", br: "br-flat" }

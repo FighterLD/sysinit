@@ -1,0 +1,7 @@
+---
+- hosts: cd-vm
+  remote_user: root
+  #gather_facts: no
+  gather_facts: True
+  roles:
+    - { role: initial}

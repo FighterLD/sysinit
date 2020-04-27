@@ -1,0 +1,20 @@
+- name: Install filebeat 
+  yum: name=filebeat state=latest update_cache=yes
+  tags:
+    - elk
+  
+- name: Config filebeat yml
+  template:
+   src: filebeat.yml.j2
+   dest: /etc/filebeat/filebeat.yml
+   mode: 0755
+  tags:
+    - elk
+
+- name: Enabled filebeat
+  service:
+    name: filebeat
+    state: started
+    enabled: yes
+  tags:
+    - elk

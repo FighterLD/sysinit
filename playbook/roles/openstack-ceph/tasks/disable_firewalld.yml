@@ -1,0 +1,13 @@
+---
+- name: Set selinux to permissive
+  shell: "setenforce 0; sed -i '7s/enforcing/permissive/' /etc/selinux/config"
+  tags:
+    - firewalld
+
+- name: Disable firewalld
+  service:
+    name: firewalld
+    state: stopped
+    enabled: no
+  tags:
+    - firewalld

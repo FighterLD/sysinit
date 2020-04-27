@@ -1,0 +1,11 @@
+NAME=br-storage
+DEVICE=br-storage
+TYPE=Bridge
+DEFROUTE=no
+ONBOOT=yes
+IPADDR={{ TARGET_HOST_NETWORKING.container_network.storage_subnet.rsplit('.', 1)[0] }}.{{ item.value.ip.split('.')[3]}}
+NETMASK={{ TARGET_HOST_NETWORKING.container_network.storage_subnet | ipaddr('netmask') }}
+GATEWAY={{ TARGET_HOST_NETWORKING.container_network.storage_gateway }}
+BOOTPROTO=none
+NM_CONTROLLED=no
+DELAY=0

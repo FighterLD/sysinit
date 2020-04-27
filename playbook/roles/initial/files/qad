@@ -1,0 +1,3 @@
+# User rules for qad
+# includedir /etc/sudoers.d
+qad ALL=(ALL) NOPASSWD: /bin/whoami,/usr/bin/vim,/usr/bin/ls,/usr/bin/cat,/usr/bin/cp,/usr/bin/tar,/usr/bin/gzip,/usr/bin/tail,/usr/bin/mkdir,/usr/bin/top,/usr/bin/telnet,/usr/bin/unzip,/usr/bin/find,/usr/bin/yum,/usr/sbin/ifconfig,/iptables,/usr/sbin/lsof,/usr/bin/docker,/usr/bin/rsync,/usr/sbin/nginx,/usr/sbin/ntpdate,/usr/sbin/ntpd,/usr/sbin/tcpdump,/usr/local/bin/kubectl,/usr/local/bin/helm,/bin/netstat,!/usr/bin/passwd,!/usr/bin/chown,!/usr/bin/chmod,!/usr/sbin/useradd,!/usr/sbin/userdel,!/usr/sbin/reboot,!/usr/sbin/shutdown

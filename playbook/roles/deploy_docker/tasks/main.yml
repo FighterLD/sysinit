@@ -1,0 +1,55 @@
+---
+- name: download docker image
+  docker_image:
+    name: "harbor.cechealth.cn/{{platform_type}}/{{project_name}}-{{ project_type }}"
+    tag: "{{ version }}"
+    pull: yes
+  tags:
+    - docker_pull
+    - docker
+
+- name: stop docker {{ project_name }}-{{ project_type }}
+  docker_container:
+    name: "{{ project_name }}-{{ project_type }}"
+    state: stopped
+  when:
+    - action_type == "stop"
+  tags:
+    - docker
+    - docker_stop
+
+- name: restart docker {{ project_name }}-{{ project_type }}
+  docker_container:
+    name: "{{ project_name }}-{{ project_type }}"
+    state: started
+    restart: yes
+  when:
+    - action_type == "restart"
+  tags:
+    - docker
+    - docker_restart
+
+- name: remove docker
+  docker_container:
+    name: "{{ project_name }}-{{ project_type }}"
+    state: absent
+  tags:
+    - docker
+    - docker_rm
+
+- include_tasks: default.yml
+  when:
+    - '"cjfh" not in project_name and "kol" not in project_name'
+#    - '"cjfh" not in project_name and "kol" not in project_name and "sms" not in project_name'
+
+- include_tasks: cjfh.yml
+  when:
+    - '"cjfh" in project_name'
+
+#- include_tasks: kol.yml
+#  when:
+#    - '"kol" in project_name'
+
+#- include_tasks: sms.yml
+#  when:
+#    - '"sms" in project_name'

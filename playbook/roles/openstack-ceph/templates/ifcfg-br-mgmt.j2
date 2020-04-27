@@ -1,0 +1,11 @@
+NAME=br-mgmt
+DEVICE=br-mgmt
+TYPE=Bridge
+DEFROUTE=yes
+IPADDR={{ item.value.ip }}
+NETMASK={{ TARGET_HOST_NETWORKING.container_network.mgmt_subnet | ipaddr('netmask')}}
+GATEWAY={{ TARGET_HOST_NETWORKING.container_network.mgmt_gateway }}
+ONBOOT=yes
+BOOTPROTO=none
+NM_CONTROLLED=no
+DELAY=0

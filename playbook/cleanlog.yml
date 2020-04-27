@@ -1,0 +1,35 @@
+---
+- hosts: physical
+  gather_facts: True
+  remote_user: root
+  tasks:
+  - name: transfer libvirtd file to server
+    copy: src=/etc/ansible/playbook/roles/initial/files/cleanlog-libvirtd dest=/etc/logrotate.d/cleanlog-libvirtd  mode=644
+  
+  - name: transfer messages file to server
+    copy: src=/etc/ansible/playbook/roles/initial/files/cleanlog-messages dest=/etc/logrotate.d/cleanlog-messages  mode=644
+
+  - name: change syslog
+    shell: sed -i 's/^.*messages/\#&/g' /etc/logrotate.d/syslog
+
+#  - name: Create scripts directory if it does not exist
+#    file:
+#     path: /opt/cechealth/scripts
+#     state: directory
+#     mode: '0755'
+#
+#  - name: Create cleanlog file if it does not exist
+#    file:
+#     path: /opt/cechealth/scripts/cleanlog.log
+#     state: touch
+#     mode: '0755'
+#
+#  - name: transfer file to server
+#    copy: src=/etc/ansible/playbook/roles/initial/files/cleanlog.sh dest=/opt/cechealth/scripts/cleanlog.sh mode=755
+#  
+#  - name: cleanlog_cron
+#    cron:
+#      name: "cleanlog_crontab" 
+#      minute: "0"
+#      hour: "21"
+#      job: "/bin/bash /opt/cechealth/scripts/cleanlog.sh>>/opt/cechealth/scripts/cleanlog.log 2>&1"

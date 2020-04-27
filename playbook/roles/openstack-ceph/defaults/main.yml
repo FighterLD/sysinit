@@ -1,0 +1,6 @@
+---
+repo_host: 172.16.56.143
+network_device:
+  - eth0
+  - eth1
+  - eth2

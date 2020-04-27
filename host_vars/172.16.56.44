@@ -1,0 +1,12 @@
+---
+host_type:
+ - docker
+
+mysql_root_password: 'Cechealth@2019'
+mysql_innodb_buffer_pool_size: 4G
+mysql_users:
+ - name: dev
+   host: "%"
+   password: 'Dev@2019'
+   priv: "*.*:ALL"
+

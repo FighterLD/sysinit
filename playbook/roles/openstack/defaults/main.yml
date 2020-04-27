@@ -1,0 +1,22 @@
+---
+ssh_config:
+  - option: ClientAliveInterval
+    value: 60
+  - option: ClientAliveCountMax
+    value: 3
+  - option: UseDNS
+    value: 'no'
+
+host_type: []
+
+etc_bashrc:
+  - option: HISTFILESIZE
+    value: 2000
+  - option: HISTSIZE
+    value: 2000
+  - option: export HISTTIMEFORMAT
+    value: '"%Y%m%d-%H%M%S: "'
+  - option: export PROMPT_COMMAND
+    value: "'{ command=$(history 1 | { read x y; echo $y; }); logger -p local5.notice -t bash -i \"user=$USER,ppid=$PPID,from=$SSH_CLIENT,pwd=$PWD,command:$command\"; }'"
+
+ansible_distribution: RedHat

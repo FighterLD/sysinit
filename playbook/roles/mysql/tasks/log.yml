@@ -1,0 +1,5 @@
+---
+- name: cp mysql log config
+  copy: src=mysql dest=/etc/logrotate.d/
+  tags: config-mysql
+

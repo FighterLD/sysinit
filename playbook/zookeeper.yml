@@ -1,0 +1,6 @@
+- name: Zookeeper cluster setup
+  hosts: zookeepers
+  sudo: yes
+  roles:
+    - role: ansible-zookeeper
+      zookeeper_hosts: "{{groups['zookeepers']}}"

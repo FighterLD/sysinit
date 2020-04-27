@@ -1,0 +1,16 @@
+---
+- name: restart keepalived
+  service:
+    name: keepalived
+    enabled: yes
+    state: restarted
+  tags:
+    - keepalive
+
+- name: restart haproxy
+  service:
+    name: haproxy
+    enabled: yes
+    state: restarted
+  tags:
+    - keepalive
