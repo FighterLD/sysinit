@@ -1,7 +1,7 @@
-#Ansible 批量初始化 Centos 服务器
+# Ansible 批量初始化 Centos 服务器
 本项目是利用Ansible 对 Centos7系统批量初始化初始化使用；
 
-##功能模块
+## 功能模块
 * 安装 Ceph
 
 * 安装 Openstack
@@ -50,4 +50,5 @@
 \`ansible-playbook -i hosts playbook/sysinit.yml -l 172.16.55.74,172.16.55.75,172.16.55.76  --skip-tag=prometheus\`
 
 * 安装Mysql
+
 \`ansible-playbook -i hosts playbook/mysql.yml -l 172.16.55.74,172.16.55.75 \`
