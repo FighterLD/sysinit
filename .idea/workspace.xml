@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74ff5ae0-b0d1-4402-aa3e-c006f583ad30" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/playbook/roles/ansible-elasticsearch" beforeDir="false" afterPath="$PROJECT_DIR$/playbook/roles/ansible-elasticsearch" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playbook/roles/ansible-elasticsearch/test/integration/xpack-upgrade-trial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster" beforeDir="false" afterPath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster/tasks/config_cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster/tasks/config_cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster/tasks/erlang_cookie.yml" beforeDir="false" afterPath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster/tasks/erlang_cookie.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster/tasks/install.yml" beforeDir="false" afterPath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster/tasks/install.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster/tasks/repository.yml" beforeDir="false" afterPath="$PROJECT_DIR$/playbook/roles/ansible-rabbitmq-cluster/tasks/repository.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playbook/roles/ansible-zookeeper" beforeDir="false" afterPath="$PROJECT_DIR$/playbook/roles/ansible-zookeeper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playbook/roles/ansible-zookeeper/defaults/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/playbook/roles/ansible-zookeeper/defaults/main.yml" afterDir="false" />
+    <list default="true" id="4a5ad710-6a98-4077-a4d8-24c7392b1afb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sysinit.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/hosts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,13 +16,45 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="52" column="60" lean-forward="true" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/sysinit.iml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/dictionaries/fighter.xml" />
+        <option value="$PROJECT_DIR$/.idea/vagrant.xml" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="880" />
-    <option name="y" value="164" />
-    <option name="width" value="878" />
+    <option name="x" value="15" />
+    <option name="y" value="80" />
+    <option name="width" value="2058" />
     <option name="height" value="1208" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -34,18 +64,28 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="sysinit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sysinit" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -106,25 +146,31 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="74ff5ae0-b0d1-4402-aa3e-c006f583ad30" name="Default Changelist" comment="" />
-      <created>1587978899965</created>
+      <changelist id="4a5ad710-6a98-4077-a4d8-24c7392b1afb" name="Default Changelist" comment="" />
+      <created>1588040472193</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1587978899965</updated>
-      <workItem from="1587978901734" duration="7000" />
-      <workItem from="1587979700498" duration="3000" />
+      <updated>1588040472193</updated>
+      <workItem from="1588040475256" duration="624000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10000" />
+    <option name="totallyTimeSpent" value="624000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="880" y="164" width="878" height="1208" extended-state="0" />
+    <frame x="15" y="80" width="2058" height="1208" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25598085" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25496033" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -132,20 +178,30 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/hosts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="18" lean-forward="true" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="60" lean-forward="true" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
