@@ -25,23 +25,41 @@
 * 批量修改主机密码
   
 * 安装 Docker
+   * 安装配置 Docker
+   * 配置 registry 登录
 
 * 安装 Mysql
-  * 安装配置 Mysql 主从复制
+   * 安装配置 Mysql 主从复制
 
 * 安装 Postgresql
 
 * 安装 Keepalive
 
 * 安装 Redis
+   * 安装 Redis
+   * 配置 redis-mgt
 
 * 安装 Zookeeper
 
 * 安装 RabbitMQ-Cluster
 
 * 安装 Elasticsearch
+  * 安装配置 Elasticsearch
+  * 安装配置 filebeat
 
-* 安装 JDK
+* 初始化 Ambari 集群
+  * 配置 Ambari 集群 SSH 免密登录
+  * 配置YUM源
+  * 安装基础软件包
+  * 安装配置JDK环境
+* 配置 LVM
+  * 自动识别未分区磁盘
+  * 创建卷组
+  * 创建逻辑卷
+  * 格式化分区
+  * 挂载目录
+  * 新建基础目录
+* 安装 Nginx
 
 
 ## 使用方法
