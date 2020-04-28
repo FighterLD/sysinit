@@ -44,7 +44,7 @@
 * 安装 JDK
 
 
-** 用法 **
+## 使用方法
 * 初始化多台服务器，并且不安装prometheus监控
 
 \`ansible-playbook -i hosts playbook/sysinit.yml -l 172.16.55.74,172.16.55.75,172.16.55.76  --skip-tag=prometheus\`
