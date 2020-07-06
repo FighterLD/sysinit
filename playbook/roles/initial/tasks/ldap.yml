@@ -57,7 +57,7 @@
   tags:
     - ldap
 
-- name: Create Cechealth User Dir
+- name: Create Ops User Dir
   file: path={{ item }} state=directory mode='0755' owner=root group=root
   with_items:
     - /opt/ops/app

@@ -27,7 +27,7 @@
     - sysinit
     - create-user
 
-- name: Create Cechealth User Dir
+- name: Create Ops User Dir
   file: path={{ item }} state=directory mode='0755' owner=ops group=ops
   with_items:
     - /opt/ops/app
