@@ -45,7 +45,7 @@
   docker_login:
     username: admin
     password: c@e@Hs71nXuc8Aek
-    registry: harbor.cechealth.cn
+    registry: harbor.ops.cn
   tags:
     - docker
     - docker_login

@@ -1,7 +1,7 @@
 ---
 - name: download docker image
   docker_image:
-    name: "harbor.cechealth.cn/{{platform_type}}/{{project_name}}-{{ project_type }}"
+    name: "harbor.ops.cn/{{platform_type}}/{{project_name}}-{{ project_type }}"
     tag: "{{ version }}"
     pull: yes
   tags:

@@ -5,5 +5,5 @@
   tasks:
   - name: transfer file to local server
     fetch:   
-       src: /root/cechealth-pass
+       src: /root/ops-pass
        dest: /root/changepass

@@ -4,7 +4,7 @@
     - neo4j
 
 - name: unarchive neo4j.tar.gz
-  unarchive: src=/tmp/neo4j-community-3.5.8-unix.tar.gz dest=/opt/cechealth/app group=neo4j owner=neo4j mode=0755 copy=no
+  unarchive: src=/tmp/neo4j-community-3.5.8-unix.tar.gz dest=/opt/ops/app group=neo4j owner=neo4j mode=0755 copy=no
   tags:
     - neo4j
 
@@ -18,7 +18,7 @@
 - name: config Neo4j.conf
   template:
     src: "neo4j.conf.j2"
-    dest: "/opt/cechealth/app/neo4j-community-3.5.8/conf/neo4j.conf"
+    dest: "/opt/ops/app/neo4j-community-3.5.8/conf/neo4j.conf"
   notify: restart neo4j
   tags:
    - neo4j

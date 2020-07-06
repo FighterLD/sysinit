@@ -1,12 +1,12 @@
 ---
 - name: Transfer node_info from Monitornode to PromethusServer
-  shell: sshpass -p "cechealth@ops" ssh -o stricthostkeychecking=no root@172.16.56.111 """echo "{{ansible_default_ipv4['address']}}" > /opt/tools/mysql_list"""
+  shell: sshpass -p "ops@ops" ssh -o stricthostkeychecking=no root@172.16.56.111 """echo "{{ansible_default_ipv4['address']}}" > /opt/tools/mysql_list"""
   ignore_errors: True
   tags:
     - prometheus
 
 - name: Join Prometheus Monitoring
-  shell: sshpass -p "cechealth@ops" ssh -o stricthostkeychecking=no root@172.16.56.111 """/usr/bin/python /opt/tools/join_mysql.py"""
+  shell: sshpass -p "ops@ops" ssh -o stricthostkeychecking=no root@172.16.56.111 """/usr/bin/python /opt/tools/join_mysql.py"""
   ignore_errors: True
   tags:
     - prometheus

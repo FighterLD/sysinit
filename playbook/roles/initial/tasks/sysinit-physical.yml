@@ -32,30 +32,30 @@
   tags:
     - sysinit
 
-- name: Create Group cechealth
+- name: Create Group ops
   group:
-    name: cechealth
+    name: ops
     state: present
   when: "'ldap' not in host_type"
   tags:
     - sysinit
     - create_user
 
-- name: Create User cechealth
+- name: Create User ops
   user:
-    name: cechealth
+    name: ops
     shell: /bin/bash
-    group: cechealth
+    group: ops
   when: "'ldap' not in host_type"
   tags:
     - sysinit
     - create-user
 
 - name: Create Cechealth User Dir
-  file: path={{ item }} state=directory mode='0755' owner=cechealth group=cechealth
+  file: path={{ item }} state=directory mode='0755' owner=ops group=ops
   with_items:
-    - /opt/cechealth/app
-    - /opt/cechealth/files
+    - /opt/ops/app
+    - /opt/ops/files
   tags:
     - sysinit
 
@@ -83,17 +83,17 @@
     - create_repo
     - create_repo_dir
 
-- name: Add repo cechealth
+- name: Add repo ops
   yum_repository:
-    name: cechealth
-    description: cechealth YUM repo
-    file: cechealth
+    name: ops
+    description: ops YUM repo
+    file: ops
     baseurl: http://172.16.56.143/7/$basearch/
     enabled: yes
     gpgcheck: no
   tags:
     - sysinit
-    - repo_cechealth
+    - repo_ops
     - create_repo
 
 - name: Add System Parameter File

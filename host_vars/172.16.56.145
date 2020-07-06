@@ -1,6 +1,0 @@
----
-postgresql_databases:
- - { name: "cechealth" }
-
-postgresql_users:
- - { name: "dev",password: "dev@postgre"}

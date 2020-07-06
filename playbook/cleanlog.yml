@@ -14,22 +14,22 @@
 
 #  - name: Create scripts directory if it does not exist
 #    file:
-#     path: /opt/cechealth/scripts
+#     path: /opt/ops/scripts
 #     state: directory
 #     mode: '0755'
 #
 #  - name: Create cleanlog file if it does not exist
 #    file:
-#     path: /opt/cechealth/scripts/cleanlog.log
+#     path: /opt/ops/scripts/cleanlog.log
 #     state: touch
 #     mode: '0755'
 #
 #  - name: transfer file to server
-#    copy: src=/etc/ansible/playbook/roles/initial/files/cleanlog.sh dest=/opt/cechealth/scripts/cleanlog.sh mode=755
+#    copy: src=/etc/ansible/playbook/roles/initial/files/cleanlog.sh dest=/opt/ops/scripts/cleanlog.sh mode=755
 #  
 #  - name: cleanlog_cron
 #    cron:
 #      name: "cleanlog_crontab" 
 #      minute: "0"
 #      hour: "21"
-#      job: "/bin/bash /opt/cechealth/scripts/cleanlog.sh>>/opt/cechealth/scripts/cleanlog.log 2>&1"
+#      job: "/bin/bash /opt/ops/scripts/cleanlog.sh>>/opt/ops/scripts/cleanlog.log 2>&1"

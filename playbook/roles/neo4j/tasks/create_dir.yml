@@ -7,7 +7,7 @@
   #  group: neo4j
   #  mode: 0644
   with_items:
-    - /opt/cechealth/app
+    - /opt/ops/app
     - /var/log/neo4j
     - /opt/database/neo4j/data 
     - /opt/database/neo4j/plugins

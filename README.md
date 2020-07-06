@@ -68,5 +68,9 @@
 `ansible-playbook -i hosts playbook/sysinit.yml -l 172.16.55.74,172.16.55.75,172.16.55.76  --skip-tag=prometheus`
 
 * 安装Mysql
+<<<<<<< HEAD
 
 `ansible-playbook -i hosts playbook/mysql.yml -l 172.16.55.74,172.16.55.75`
+=======
+\`ansible-playbook -i hosts playbook/mysql.yml -l 172.16.55.74,172.16.55.75 \`
+>>>>>>> modify password

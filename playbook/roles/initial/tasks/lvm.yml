@@ -62,10 +62,10 @@
   tags:
     - lvm
 
-- name: u'创建lvm后重新创建cechealth目录'
-  file: path={{ item }} state=directory mode='0755' owner=cechealth group=root
+- name: u'创建lvm后重新创建ops目录'
+  file: path={{ item }} state=directory mode='0755' owner=ops group=root
   with_items:
-    - /opt/cechealth/app
-    - /opt/cechealth/files
+    - /opt/ops/app
+    - /opt/ops/files
   tags:
     - lvm

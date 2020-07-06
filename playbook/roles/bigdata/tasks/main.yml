@@ -48,7 +48,7 @@
   lineinfile:
     dest: /etc/hosts
     regexp: "^#?{{ item }}.+$"
-    line: "{{ item }} {{ hostvars[item]['ansible_hostname'] }}.cechealth.cn {{ hostvars[item]['ansible_hostname'] }}"
+    line: "{{ item }} {{ hostvars[item]['ansible_hostname'] }}.ops.cn {{ hostvars[item]['ansible_hostname'] }}"
   with_inventory_hostnames:
     - bigdata
 #  with_items:

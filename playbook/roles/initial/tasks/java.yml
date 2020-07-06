@@ -4,5 +4,5 @@
     - jdk1.8.0_74.x86_64
     state: present 
     update_cache: yes
-    enablerepo: cechealth
+    enablerepo: ops
   tags: java

@@ -20,7 +20,7 @@ etc_bashrc:
 lvm:
   disk_device: /dev/vdb
   part_num: 1
-  vg_name: cechealth
+  vg_name: ops
   lv_name: data
   lvfilesystem: xfs
   mount_path: /opt
